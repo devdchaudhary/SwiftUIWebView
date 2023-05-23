@@ -42,9 +42,9 @@ public struct WebView: View {
             
             Spacer()
             
-            ZStack {
+            if isValidURL(url: url) {
                 
-                if isValidURL(url: url) {
+                ZStack {
                     
                     WebRepresentable(url) {
                         didLoad = true
