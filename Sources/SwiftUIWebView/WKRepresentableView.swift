@@ -11,10 +11,10 @@ import WebKit
 @available(iOS 14.0, *)
 struct WebRepresentable : UIViewRepresentable {
     
-    var url: URL?
+    var url: String
     private var onLoad: (() -> Void)?
     
-    init(_ url: URL?, onLoad: (() -> Void)?) {
+    init(_ url: String, onLoad: (() -> Void)?) {
         self.url = url
         self.onLoad = onLoad
     }
@@ -29,7 +29,7 @@ struct WebRepresentable : UIViewRepresentable {
     }
 
     func updateUIView(_ webView: WKWebView, context: Context) {
-        if let url {
+        if let url = URL(string: url) {
             let req = URLRequest(url: url)
             webView.uiDelegate = context.coordinator
             webView.navigationDelegate = context.coordinator

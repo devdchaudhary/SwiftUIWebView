@@ -16,6 +16,7 @@ public struct WebView: View {
     var url: String
     var showProgressBar: Bool
     @State private var didLoad = false
+    @State private var isValidURL = false
     
     public init(url: String, showProgressBar: Bool) {
         self.url = url
@@ -41,44 +42,68 @@ public struct WebView: View {
             .padding(.horizontal)
             
             Spacer()
-                            
-            if isValidURL(url).0 == true {
-                
-                ZStack {
+                                            
+                if isValidURL {
                     
-                    WebRepresentable(isValidURL(url).1) {
-                        didLoad = true
-                    }
-                    
-                    if showProgressBar {
-                        if !didLoad {
-                            ProgressView()
+                    ZStack {
+                        
+                        WebRepresentable(url) {
+                            didLoad = true
+                        }
+                        
+                        if showProgressBar {
+                            if !didLoad {
+                                ProgressView()
+                            }
                         }
                     }
                 }
-            }
             
             Spacer()
             
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            isReachable(urlString: url) { success in
+                if success {
+                    isValidURL = true
+                }
+            }
+        }
     }
     
-    func isValidURL(_ urlString: String) -> (Bool, URL?) {
+    func isReachable(urlString: String, completion: @escaping (Bool) -> ()) {
         
-        if let url = NSURL(string: urlString) {
-            return (UIApplication.shared.canOpenURL(url as URL), URL(string: urlString))
+        guard let url = URL(string: urlString) else {
+            
+            completion(false)
+            return
         }
         
-        let alert = UIAlertController(title: "Invalid URL", message: "This website doensn't exist.", preferredStyle: .alert)
+        var request = URLRequest(url: url)
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
-            dismissView()
-        }))
+        request.httpMethod = "HEAD"
         
-        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+        URLSession.shared.dataTask(with: request) { _, response, _ in
+            
+            let status = response as? HTTPURLResponse
+            
+            if status?.statusCode == 200 {
+                
+                completion(true)
+            }
+            
+            let alert = UIAlertController(title: "Invalid URL", message: "This website doesn't exist.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+                dismissView()
+            }))
+            
+            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+            completion(false)
+        }
+        .resume()
         
-        return (false, nil)
     }
     
     private func dismissView() {
