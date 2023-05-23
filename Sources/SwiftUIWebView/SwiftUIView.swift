@@ -42,7 +42,7 @@ public struct WebView: View {
             
             Spacer()
             
-            if isValidURL() {
+            if isValidURL(url: url) {
                 
                 ZStack {
                     
@@ -64,8 +64,22 @@ public struct WebView: View {
         .navigationBarBackButtonHidden()
     }
     
-    public func isValidURL() -> Bool {
-        return UIApplication.shared.canOpenURL(url)
+    public func isValidURL(url: URL) -> Bool {
+        
+        if UIApplication.shared.canOpenURL(url) {
+            return true
+        }
+        
+        let alert = UIAlertController(title: "Invalid URL", message: "This website doensn't exist.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+            dismissView()
+        }))
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                
+        return false
+        
     }
     
     private func dismissView() {
