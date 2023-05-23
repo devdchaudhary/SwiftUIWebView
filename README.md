@@ -26,4 +26,5 @@ Click Add to Project
 
 Usage
 
+```import SwiftUIWebView```
 
