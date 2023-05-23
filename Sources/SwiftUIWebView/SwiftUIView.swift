@@ -66,7 +66,9 @@ public struct WebView: View {
         .onAppear {
             isReachable(urlString: url) { success in
                 if success {
-                    isValidURL = true
+                    DispatchQueue.main.async {
+                        isValidURL = true
+                    }
                 }
             }
         }
@@ -85,7 +87,7 @@ public struct WebView: View {
         request.httpMethod = "HEAD"
         
         URLSession.shared.dataTask(with: request) { _, response, _ in
-            
+            print(response)
             let status = response as? HTTPURLResponse
             
             if status?.statusCode == 200 {
