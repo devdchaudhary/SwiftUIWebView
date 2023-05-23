@@ -96,7 +96,7 @@ struct SwiftUIView: View {
 ```
 
 ![Playback demo](/Media/vid2.gif)
-<img src="/Media/vid2.gif" width="250" height="250"/>
+<img src="vid2.gif" width="250" height="250"/>
 
 
 
