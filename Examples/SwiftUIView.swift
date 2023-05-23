@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SwiftUIView: View {
 
+    @State private var showSheet = false
     var url = "https://www.devdchaudhary.com"
         
     var body: some View {
