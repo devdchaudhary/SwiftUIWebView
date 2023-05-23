@@ -16,7 +16,7 @@ Swift Package Manager
 
 To integrate SwiftUIWebView into your Xcode project, specify it in Package Dependancies > Click the "+" button > Copy and paste the URL below:
 
-https://github.com/devdchaudhary/SwiftUIWebView
+```https://github.com/devdchaudhary/SwiftUIWebView```
 
 set branch to "master"
 
