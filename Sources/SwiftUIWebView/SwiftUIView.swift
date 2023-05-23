@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 public struct WebView: View {
-
+    
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     
@@ -21,13 +21,13 @@ public struct WebView: View {
         self.url = url
         self.showProgressBar = showProgressBar
     }
-
+    
     public var body: some View {
         
         VStack {
             
             HStack {
-                                
+                
                 Button(action: dismissView) {
                     Image(systemName: "xmark")
                         .foregroundColor(colorScheme == .dark ? .white : .black)
@@ -42,9 +42,9 @@ public struct WebView: View {
             
             Spacer()
             
-            if isValidURL(url: url) {
+            ZStack {
                 
-                ZStack {
+                if isValidURL(url: url) {
                     
                     WebRepresentable(url) {
                         didLoad = true
@@ -67,19 +67,22 @@ public struct WebView: View {
     public func isValidURL(url: URL) -> Bool {
         
         if UIApplication.shared.canOpenURL(url) {
+            
             return true
+            
+        } else {
+            
+            let alert = UIAlertController(title: "Invalid URL", message: "This website doensn't exist.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+                dismissView()
+            }))
+            
+            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+            
+            return false
+            
         }
-        
-        let alert = UIAlertController(title: "Invalid URL", message: "This website doensn't exist.", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
-            dismissView()
-        }))
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
-                
-        return false
-        
     }
     
     private func dismissView() {
