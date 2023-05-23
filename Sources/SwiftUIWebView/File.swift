@@ -26,6 +26,7 @@ public func isReachable(urlString: String, completion: @escaping (Bool) -> ()) {
         if status?.statusCode == 200 {
             
             completion(true)
+            return
         }
         
         let alert = UIAlertController(title: "Invalid URL", message: "This website doesn't exist.", preferredStyle: .alert)
