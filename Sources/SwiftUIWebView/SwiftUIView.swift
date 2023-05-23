@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-struct WebView: View {
+public struct WebView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
@@ -17,7 +17,7 @@ struct WebView: View {
     @Binding var showProgressBar: Bool
     @State private var didLoad = false
     
-    var body: some View {
+    public var body: some View {
         
         VStack {
             
