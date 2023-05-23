@@ -41,21 +41,18 @@ public struct WebView: View {
             .padding(.horizontal)
             
             Spacer()
-            
-            if let url = URL(string: url) {
+                            
+            if isValidURL(url).0 == true {
                 
-                if isValidURL(url: url) {
+                ZStack {
                     
-                    ZStack {
-                        
-                        WebRepresentable(url) {
-                            didLoad = true
-                        }
-                        
-                        if showProgressBar {
-                            if !didLoad {
-                                ProgressView()
-                            }
+                    WebRepresentable(isValidURL(url).1) {
+                        didLoad = true
+                    }
+                    
+                    if showProgressBar {
+                        if !didLoad {
+                            ProgressView()
                         }
                     }
                 }
@@ -67,25 +64,21 @@ public struct WebView: View {
         .navigationBarBackButtonHidden()
     }
     
-    public func isValidURL(url: URL) -> Bool {
+    func isValidURL(_ urlString: String) -> (Bool, URL?) {
         
-        if UIApplication.shared.canOpenURL(url) {
-            
-            return true
-            
-        } else {
-            
-            let alert = UIAlertController(title: "Invalid URL", message: "This website doensn't exist.", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
-                dismissView()
-            }))
-            
-            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
-            
-            return false
-            
+        if let url = NSURL(string: urlString) {
+            return (UIApplication.shared.canOpenURL(url as URL), URL(string: urlString))
         }
+        
+        let alert = UIAlertController(title: "Invalid URL", message: "This website doensn't exist.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+            dismissView()
+        }))
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+        
+        return (false, nil)
     }
     
     private func dismissView() {
