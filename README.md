@@ -58,7 +58,7 @@ struct SwiftUIView: View {
 
 Additionally you can pass a boolean for showing a progress bar.
 
-![Playback demo](/Media/vid1.mp4)
+https://github.com/devdchaudhary/SwiftUIWebView/assets/52855516/5a88b7e4-cd2c-4a0f-8c97-a21c36fa4479
 
 You can also use the `isReachable` function to check if a website is valid or not.
 
@@ -95,7 +95,7 @@ struct SwiftUIView: View {
 
 ```
 
-<img src="/Media/vid2.gif" width=50% height=50%>
+https://github.com/devdchaudhary/SwiftUIWebView/assets/52855516/bbe83ba0-8dca-4e76-9a93-0b269bad0604
 
 
 
