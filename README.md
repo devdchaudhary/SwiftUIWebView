@@ -38,6 +38,7 @@ import SwiftUIWebView
 
 struct SwiftUIView: View {
 
+    @State private var showSheet = false
     var url = "https://www.devdchaudhary.com"
         
     var body: some View {
@@ -70,6 +71,7 @@ import SwiftUIWebView
 
 struct SwiftUIView: View {
 
+    @State private var showSheet = false
     var url = "invalidWebsite.com"
         
     var body: some View {
