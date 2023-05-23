@@ -63,15 +63,7 @@ public struct WebView: View {
             
         }
         .navigationBarBackButtonHidden()
-        .onAppear {
-            isReachable(urlString: url) { success in
-                if success {
-                    DispatchQueue.main.async {
-                        isValidURL = true
-                    }
-                }
-            }
-        }
+        
     }
     
     func isReachable(urlString: String, completion: @escaping (Bool) -> ()) {
@@ -87,7 +79,7 @@ public struct WebView: View {
         request.httpMethod = "HEAD"
         
         URLSession.shared.dataTask(with: request) { _, response, _ in
-            print(response)
+
             let status = response as? HTTPURLResponse
             
             if status?.statusCode == 200 {
