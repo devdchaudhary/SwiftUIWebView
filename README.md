@@ -24,6 +24,8 @@ Check SwiftUIWebview
 
 Click Add to Project
 
+https://github.com/devdchaudhary/SwiftUIWebView/assets/52855516/fa60e200-b78e-4be6-95fa-b4de4d922c20
+
 Usage
 
 Step 1 : Import SwiftUIWebView
