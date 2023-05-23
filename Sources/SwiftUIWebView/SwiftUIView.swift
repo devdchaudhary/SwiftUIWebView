@@ -16,7 +16,6 @@ public struct WebView: View {
     var url: String
     var showProgressBar: Bool
     @State private var didLoad = false
-    @State private var isValidURL = false
     
     public init(url: String, showProgressBar: Bool) {
         self.url = url
@@ -42,22 +41,19 @@ public struct WebView: View {
             .padding(.horizontal)
             
             Spacer()
-                                            
-                if isValidURL {
-                    
-                    ZStack {
-                        
-                        WebRepresentable(url) {
-                            didLoad = true
-                        }
-                        
-                        if showProgressBar {
-                            if !didLoad {
-                                ProgressView()
-                            }
-                        }
+                                                                
+            ZStack {
+                
+                WebRepresentable(url) {
+                    didLoad = true
+                }
+                
+                if showProgressBar {
+                    if !didLoad {
+                        ProgressView()
                     }
                 }
+            }
             
             Spacer()
             
