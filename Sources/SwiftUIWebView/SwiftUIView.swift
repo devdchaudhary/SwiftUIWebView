@@ -30,7 +30,7 @@ public struct WebView: View {
                                 
                 Button(action: dismissView) {
                     Image(systemName: "xmark")
-                        .foregroundColor(.black)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                         .font(.system(size: 15))
                     
                 }
@@ -42,18 +42,27 @@ public struct WebView: View {
             
             Spacer()
             
-            ZStack {
+            if let url = URL(string: url) {
                 
-                WebRepresentable(url) {
-                    didLoad = true
-                }
-                
-                if showProgressBar {
-                    if !didLoad {
-                        ProgressView()
+                ZStack {
+                    
+                    WebRepresentable(url) {
+                        didLoad = true
+                    }
+                    
+                    if showProgressBar {
+                        if !didLoad {
+                            ProgressView()
+                        }
                     }
                 }
                 
+            } else {
+                
+                Text("Invalid URL")
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                    .font(.system(size: 15))
+
             }
             
             Spacer()
