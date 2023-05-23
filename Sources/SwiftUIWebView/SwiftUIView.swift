@@ -13,11 +13,11 @@ public struct WebView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     
-    var url: URL
+    var url: String
     var showProgressBar: Bool
     @State private var didLoad = false
     
-    public init(url: URL, showProgressBar: Bool) {
+    public init(url: String, showProgressBar: Bool) {
         self.url = url
         self.showProgressBar = showProgressBar
     }
@@ -42,17 +42,20 @@ public struct WebView: View {
             
             Spacer()
             
-            if isValidURL(url: url) {
+            if let url = URL(string: url) {
                 
-                ZStack {
+                if isValidURL(url: url) {
                     
-                    WebRepresentable(url) {
-                        didLoad = true
-                    }
-                    
-                    if showProgressBar {
-                        if !didLoad {
-                            ProgressView()
+                    ZStack {
+                        
+                        WebRepresentable(url) {
+                            didLoad = true
+                        }
+                        
+                        if showProgressBar {
+                            if !didLoad {
+                                ProgressView()
+                            }
                         }
                     }
                 }
