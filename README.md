@@ -95,7 +95,7 @@ struct SwiftUIView: View {
 
 ```
 
-https://github.com/devdchaudhary/SwiftUIWebView/assets/52855516/32375b66-86e5-4ac7-9e09-031f91fd7889
+set branch to "master"![Simulator Screen Recording - iPhone 14 Pro - 2023-05-23 at 15 56 17](https://github.com/devdchaudhary/SwiftUIWebView/assets/52855516/32375b66-86e5-4ac7-9e09-031f91fd7889)
 
 
 
