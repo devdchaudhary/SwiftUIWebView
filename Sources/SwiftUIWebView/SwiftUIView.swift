@@ -42,7 +42,7 @@ public struct WebView: View {
             
             Spacer()
             
-            if url.isValidURL {
+            if isValidURL() {
                 
                 ZStack {
                     
@@ -56,19 +56,16 @@ public struct WebView: View {
                         }
                     }
                 }
-                
-            } else {
-                
-                Text("Invalid URL")
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                    .font(.system(size: 15))
-
             }
             
             Spacer()
             
         }
         .navigationBarBackButtonHidden()
+    }
+    
+    public func isValidURL() -> Bool {
+        return UIApplication.shared.canOpenURL(url)
     }
     
     private func dismissView() {
