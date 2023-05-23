@@ -1,4 +1,4 @@
-# SwiftUIWebView - A UIKit Wrapper for WebView in SwiftUI
+# SwiftUIWebView - A UIKit WKWebView Wrapper for SwiftUI
 
 A UIKit Wrapper for SwiftUI to be able to show users WebViews while staying inside your app using the WebKit Framework.
 
