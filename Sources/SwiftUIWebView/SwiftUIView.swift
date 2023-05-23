@@ -9,14 +9,19 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 public struct WebView: View {
-    
+
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     
-    @Binding var url: String
-    @Binding var showProgressBar: Bool
+    var url: String
+    var showProgressBar: Bool
     @State private var didLoad = false
     
+    public init(url: String, showProgressBar: Bool) {
+        self.url = url
+        self.showProgressBar = showProgressBar
+    }
+
     public var body: some View {
         
         VStack {
