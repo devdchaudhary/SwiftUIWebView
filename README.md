@@ -95,8 +95,7 @@ struct SwiftUIView: View {
 
 ```
 
-https://github.com/devdchaudhary/SwiftUIWebView/assets/52855516/bbe83ba0-8dca-4e76-9a93-0b269bad0604
-
+https://github.com/devdchaudhary/SwiftUIWebView/assets/52855516/32375b66-86e5-4ac7-9e09-031f91fd7889
 
 
 
