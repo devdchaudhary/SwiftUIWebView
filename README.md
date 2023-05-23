@@ -95,7 +95,7 @@ struct SwiftUIView: View {
 
 ```
 
-![Playback demo](/Media/vid2.mp4)
+![Playback demo](/Media/vid2.gif)
 
 
 
