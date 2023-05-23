@@ -66,7 +66,7 @@ public struct WebView: View {
         
     }
     
-    func isReachable(urlString: String, completion: @escaping (Bool) -> ()) {
+    public func isReachable(urlString: String, completion: @escaping (Bool) -> ()) {
         
         guard let url = URL(string: urlString) else {
             
