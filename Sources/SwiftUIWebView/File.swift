@@ -30,11 +30,15 @@ public func isReachable(urlString: String, completion: @escaping (Bool) -> ()) {
         
         let alert = UIAlertController(title: "Invalid URL", message: "This website doesn't exist.", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+        DispatchQueue.main.async {
             
-        }))
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+                
+            }))
+            
+            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+            
         completion(false)
     }
     .resume()
