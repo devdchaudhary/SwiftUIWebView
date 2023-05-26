@@ -30,7 +30,7 @@ struct SwiftUIView: View {
             
         }
         .fullScreenCover(isPresented: $showSheet) {
-            WebView(url: url, showProgressBar: true)
+            WebView(url: url, showProgressBar: true, tintColor: .green)
         }
     }
 }
