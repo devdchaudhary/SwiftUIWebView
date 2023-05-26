@@ -8,7 +8,7 @@
 import SwiftUI
 import WebKit
 
-@available(iOS 14.0, *)
+@available(iOS 15.0, *)
 struct WebRepresentable : UIViewRepresentable {
     
     var url: String

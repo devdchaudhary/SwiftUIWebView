@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
+@available(iOS 15.0, *)
 public struct WebView: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -15,11 +15,14 @@ public struct WebView: View {
     
     var url: String
     var showProgressBar: Bool
+    var tintColor: Color
+    
     @State private var didLoad = false
     
-    public init(url: String, showProgressBar: Bool) {
+    public init(url: String, showProgressBar: Bool, tintColor: Color) {
         self.url = url
         self.showProgressBar = showProgressBar
+        self.tintColor = tintColor
     }
     
     public var body: some View {
@@ -51,6 +54,7 @@ public struct WebView: View {
                 if showProgressBar {
                     if !didLoad {
                         ProgressView()
+                            .tint(tintColor)
                     }
                 }
             }
