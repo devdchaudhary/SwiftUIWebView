@@ -4,13 +4,13 @@ A UIKit Wrapper for SwiftUI to be able to show users WebViews while staying insi
 
 It uses WKWebView to show this.
 
-Requirements
+## Requirments
 
 iOS 14,
 Swift 5.0
 Xcode 13.0+
 
-Installation
+## Installation
 
 Swift Package Manager
 
