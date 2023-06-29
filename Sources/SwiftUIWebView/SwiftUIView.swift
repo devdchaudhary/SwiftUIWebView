@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 15.0, *)
 public struct WebView: View {
     
     @Environment(\.presentationMode) var presentationMode
