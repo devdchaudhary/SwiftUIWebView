@@ -6,7 +6,7 @@ It uses WKWebView to show this.
 
 Requirements
 
-iOS 14,
+iOS 15,
 Swift 5.0
 Xcode 13.0+
 
