@@ -32,6 +32,7 @@ struct WebRepresentable : UIViewRepresentable {
             let req = URLRequest(url: url)
             webView.uiDelegate = context.coordinator
             webView.navigationDelegate = context.coordinator
+            webView.allowsBackForwardNavigationGestures = true
             webView.load(req)
         }
     }
