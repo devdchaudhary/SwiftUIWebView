@@ -1,16 +1,16 @@
-# SwiftUIWebView - A UIKit WKWebView Wrapper for SwiftUI
+# SwiftUIWebView - A WKWebView Wrapper for SwiftUI
 
 A UIKit Wrapper for SwiftUI to be able to show users WebViews while staying inside your app using the WebKit Framework.
 
 It uses WKWebView to show this.
 
-Requirements
+## Requirments
 
 iOS 15,
 Swift 5.0
 Xcode 13.0+
 
-Installation
+## Installation
 
 Swift Package Manager
 
