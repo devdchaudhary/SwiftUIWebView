@@ -9,12 +9,12 @@ import SwiftUI
 
 public struct WebView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     @Environment(\.colorScheme) var colorScheme
     
     var url: String
     var showProgressBar: Bool
-    var tintColor: Color
+    var tintColor: Color = .clear
     
     @State private var didLoad = false
     
@@ -66,7 +66,7 @@ public struct WebView: View {
     }
     
     private func dismissView() {
-        presentationMode.wrappedValue.dismiss()
+        dismiss()
     }
     
 }
