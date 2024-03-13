@@ -14,11 +14,11 @@ public struct WebView: View {
     
     var url: String
     var showProgressBar: Bool
-    var tintColor: Color? = .clear
+    var tintColor: Color?
     
     @State private var didLoad = false
     
-    public init(url: String, showProgressBar: Bool, tintColor: Color?) {
+    public init(url: String, showProgressBar: Bool, tintColor: Color? = nil) {
         self.url = url
         self.showProgressBar = showProgressBar
         self.tintColor = tintColor
