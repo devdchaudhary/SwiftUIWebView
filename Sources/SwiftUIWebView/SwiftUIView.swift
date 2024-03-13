@@ -47,7 +47,7 @@ public struct WebView: View {
                                                                 
             ZStack {
                 
-                WebRepresentable(url) {
+                WebRepresentable($url.wrappedValue) {
                     didLoad = true
                 }
                 
