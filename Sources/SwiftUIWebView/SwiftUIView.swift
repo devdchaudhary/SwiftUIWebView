@@ -12,14 +12,15 @@ public struct WebView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.colorScheme) var colorScheme
     
-    var url: String
+    @Binding var url: String
+    
     var showProgressBar: Bool
     var tintColor: Color?
     
     @State private var didLoad = false
     
-    public init(url: String, showProgressBar: Bool, tintColor: Color? = nil) {
-        self.url = url
+    public init(url: Binding<String>, showProgressBar: Bool, tintColor: Color? = nil) {
+        self._url = url
         self.showProgressBar = showProgressBar
         self.tintColor = tintColor
     }
@@ -56,9 +57,6 @@ public struct WebView: View {
                             .tint(tintColor)
                     }
                 }
-            }
-            .onAppear {
-                print("done", url)
             }
             
             Spacer()
