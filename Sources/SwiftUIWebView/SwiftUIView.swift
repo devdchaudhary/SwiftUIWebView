@@ -47,7 +47,6 @@ public struct WebView: View {
             ZStack {
                 
                 WebRepresentable(url) {
-                    print("done")
                     didLoad = true
                 }
                 
@@ -57,6 +56,9 @@ public struct WebView: View {
                             .tint(tintColor)
                     }
                 }
+            }
+            .onAppear {
+                print("done", url)
             }
             
             Spacer()
