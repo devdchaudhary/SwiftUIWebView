@@ -33,7 +33,7 @@ public struct WebView: View {
                 Button(action: dismissView) {
                     Image(systemName: "xmark")
                         .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .font(.system(size: 15))
+                        .font(.system(size: 18))
                     
                 }
                 
@@ -47,6 +47,7 @@ public struct WebView: View {
             ZStack {
                 
                 WebRepresentable(url) {
+                    print("done")
                     didLoad = true
                 }
                 
